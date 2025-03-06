@@ -45,20 +45,19 @@ def output_text(task, summary, output):
 
 def make_prompt(dataset, instruction, index_to_summarize, list_index_to_train):
     prompt = ''
-    if not list_index_to_train:
-        for index in list_index_to_train:
-            dialogue = dataset['test'][index]['dialogue']
-            summary = dataset['test'][index]['summary']
+    for index in list_index_to_train:
+        dialogue = dataset['test'][index]['dialogue']
+        summary = dataset['test'][index]['summary']
 
-            # The stop sequence '{summary}\n\n\n' is important for FLAN-T5. Other models may have their own preferred stop sequence.
-            prompt += f"""
-                Dialogue:
+        # The stop sequence '{summary}\n\n\n' is important for FLAN-T5. Other models may have their own preferred stop sequence.
+        prompt += f"""
+            Dialogue:
 
-                {dialogue}
+            {dialogue}
 
-                {instruction}
-                {summary}
-            """
+            {instruction}
+            {summary}
+        """
 
     dialogue = dataset['test'][index_to_summarize]['dialogue']
     summary = dataset['test'][index_to_summarize]['summary']
