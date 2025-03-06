@@ -15,7 +15,8 @@ def huggingface_dataset() -> DatasetDict:
     return load_dataset(huggingface_dataset_name)
     
 
-def display_dialogue_summaries(sample_indices: List[int], dataset: Dict[str, Dict[str, List[Dict[str, str]]]]) -> None:
+def display_dialogue_summaries(sample_indices: List[int], 
+                               dataset: Dict[str, Dict[str, List[Dict[str, str]]]]) -> None:
     """
     Displays dialogues and corresponding human-generated summaries for the given sample indices.
 
